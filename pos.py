@@ -325,8 +325,11 @@ def commandline():
 
     @command()
     @argument('files', nargs=-1, type=CPath(exists=True))
-    @option('--save', '-s', is_flag=True,
-        help="For each named file provided, save its corresponding parsed document. The file is saved in 'the directory given by the config file's 'parsed' option. The filename is saved with an additional .dzeug extension. Default: output is sent to stdout and input files are separated with two empty lines.")
+    @option('--save', '-s', is_flag=True, help=(
+        "For each named file provided, save its corresponding parsed document. "
+        "The file is saved in the directory given by the config file's 'parsed' option. "
+        "The filename is saved with an additional .dzeug extension. "
+        "(Default: output is sent to stdout and input files are separated with two empty lines)"))
     @option('--no-lang-check', 'no_lang_check', is_flag=True,
         help='Skip language detection')
     def cli(files, save, no_lang_check):
