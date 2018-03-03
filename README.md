@@ -6,22 +6,6 @@ Texts can be parsed, stored and used with a small search engine for finding sent
 
 Api is unstable. Not currently for general use.
 
-
-    Usage: dzeug-pos [OPTIONS] [FILES]...
-
-    Options:
-    -s, --save       For each named file provided, save its corresponding parsed
-                     document. The file is saved in the directory given by the
-                     config file's 'dir.parsed' value, and the filename is saved
-                     with an additional .dzeug extension.
-
-                     Default: output is sent to stdout and input files are separated
-                     with two empty lines.
-
-    --no-lang-check  Skip language detection
-    --help           Show this message and exit.
-
-
     Usage: dzeug-sent [OPTIONS] WORD [PATHS]...
 
     Options:
@@ -43,3 +27,18 @@ Api is unstable. Not currently for general use.
       --simple          Show only lemmas as simple list, no formatting
       -d, --dzeug       Input text is already tagged in dzeug format
       --help            Show this message and exit.
+
+
+    Usage: dzeug-pos [OPTIONS] [FILES]...
+
+    Options:
+    -s, --save       For each named file provided, save its corresponding parsed
+                     document. The file is saved in the directory given by the
+                     config file's 'dir.parsed' value, and the filename is saved
+                     with an additional .dzeug extension.
+
+                     Default: output is sent to stdout and input files are separated
+                     with two empty lines.
+
+    --no-lang-check  Skip language detection
+    --help           Show this message and exit.
