@@ -2,7 +2,7 @@
 from functools import partial
 from itertools import islice, chain
 from subprocess import run, Popen, PIPE
-from collections import namedtuple
+from typing import NamedTuple
 from dzeug.pos import Tag, read_parsed, reconstruct, config, snd, log, STTS
 from click import command, argument, option, prompt, get_terminal_size, Path as CPath
 from pathlib import Path
@@ -24,7 +24,13 @@ markleft  = '\x00'
 markright = '\x01'
 
 
-Options = namedtuple('Options', 'use_pager show_titles shuffle format retry lemma_path')
+class Options(NamedTuple):
+    use_pager:   bool
+    show_titles: bool
+    shuffle:     bool
+    format:      bool
+    retry:       bool
+    lemma_path:  Path
 
 
 

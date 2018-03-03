@@ -1,7 +1,8 @@
 #! /usr/bin/env python3
 from functools import partial
 from itertools import groupby, filterfalse, tee, starmap, dropwhile
-from collections import defaultdict, namedtuple
+from collections import defaultdict
+from typing import NamedTuple
 from operator import is_, itemgetter
 from segtok.segmenter import split_single as sentence_split
 from segtok.tokenizer import word_tokenizer as word_split
@@ -32,11 +33,17 @@ STTS = frozenset({
     'VMINF', 'VMPP', 'XY', '$,', '$.', '$('})
 
 
-Tag = namedtuple('Tag', 'word lemma pos')
-def print_tag(self):
-    return '%s|%s|%s' % self
-Tag.__repr__ = print_tag
-Tag.__str__ = print_tag
+class Tag(NamedTuple):
+    word:  str
+    lemma: str
+    pos:   str
+
+    def __str__(self):
+        return '%s|%s|%s' % self
+
+    def __repr__(self):
+        return 'Tag(%s|%s|%s)' % self
+
 
 none = partial(is_, None)
 fst = itemgetter(0)
@@ -51,7 +58,10 @@ def truncate(s, maxchars):
 
 # Config —————————————————————————————————————————————————————————————————————
 
-Config = namedtuple('Config', 'data_dir stanford_dir parsed_dir')
+class Config(NamedTuple):
+    data_dir:     Path
+    stanford_dir: Path
+    parsed_dir:   Path
 
 def _load_config():
     path = Path('~/.config/dzeug/dzeug.conf').expanduser()
